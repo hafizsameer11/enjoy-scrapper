@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EnjoyTravel Car Rental Scraper</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 2em;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .form-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-secondary {
+            background: #28a745;
+            margin-left: 10px;
+        }
+
+        .location-results {
+            margin-top: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 6px;
+            border: 2px solid #e0e0e0;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .location-item {
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+
+        .location-item:hover {
+            background: #f0f0f0;
+        }
+
+        .location-item.selected {
+            background: #667eea;
+            color: white;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            color: #667eea;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .results-section {
+            margin-top: 30px;
+        }
+
+        .results-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .results-count {
+            color: #666;
+            font-size: 14px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 14px;
+        }
+
+        tbody tr:hover {
+            background: #f8f9fa;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .badge-yes {
+            background: #28a745;
+            color: white;
+        }
+
+        .badge-no {
+            background: #dc3545;
+            color: white;
+        }
+
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 20px;
+        }
+
+        .success {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 20px;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+            padding: 20px;
+        }
+
+        .pagination button {
+            padding: 8px 16px;
+            border: 2px solid #e0e0e0;
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .pagination button:hover:not(:disabled) {
+            background: #f0f0f0;
+            border-color: #667eea;
+        }
+
+        .pagination button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .pagination button.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: #667eea;
+        }
+
+        .pagination-info {
+            margin: 0 15px;
+            color: #666;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚗 EnjoyTravel Car Rental Scraper</h1>
+        <p class="subtitle">Search and compare car rental offers from EnjoyTravel.com</p>
+
+        <div class="form-section">
+            <h2 style="margin-bottom: 20px; color: #333;">Search Location</h2>
+            <div class="form-group">
+                <label for="locationQuery">Enter Location (e.g., "Miami Airport", "New York")</label>
+                <div style="display: flex; gap: 10px;">
+                    <input type="text" id="locationQuery" placeholder="Miami Airport" value="Miami Airport">
+                    <button class="btn" onclick="searchLocation()">Search</button>
+                </div>
+                <div id="locationResults" class="location-results" style="display: none;"></div>
+                <div id="selectedLocation" style="margin-top: 15px; padding: 10px; background: #e7f3ff; border-radius: 6px; display: none;">
+                    <strong>Selected:</strong> <span id="selectedLocationText"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2 style="margin-bottom: 20px; color: #333;">Rental Dates & Times</h2>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="pickupDate">Pickup Date</label>
+                    <input type="date" id="pickupDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="pickupTime">Pickup Time</label>
+                    <input type="time" id="pickupTime" value="12:00" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="dropoffDate">Drop-off Date</label>
+                    <input type="date" id="dropoffDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="dropoffTime">Drop-off Time</label>
+                    <input type="time" id="dropoffTime" value="12:00" required>
+                </div>
+            </div>
+            <button class="btn" onclick="runScraper()" id="scrapeBtn">🔍 Search Car Rentals</button>
+        </div>
+
+        <div class="form-section" style="border-top: 2px solid #e0e0e0; margin-top: 30px; padding-top: 25px;">
+            <h2 style="margin-bottom: 20px; color: #333;">📅 Bulk Search (One-Day Rentals)</h2>
+            <p style="color: #666; margin-bottom: 20px; font-size: 14px;">
+                Search for one-day rentals across a date range. Each day will be searched separately.
+            </p>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="bulkStartDate">Start Date</label>
+                    <input type="date" id="bulkStartDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="bulkEndDate">End Date</label>
+                    <input type="date" id="bulkEndDate" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="bulkTime">Pickup/Drop-off Time</label>
+                    <input type="time" id="bulkTime" value="12:00" required>
+                </div>
+                <div class="form-group">
+                    <label style="opacity: 0;">&nbsp;</label>
+                    <div id="bulkDateCount" style="padding: 12px; background: #f8f9fa; border-radius: 6px; color: #666; font-size: 14px;">
+                        Select date range to see number of searches
+                    </div>
+                </div>
+            </div>
+            <button class="btn" onclick="runBulkScraper()" id="bulkScrapeBtn" style="width: 100%;">🚀 Run Bulk Search</button>
+            <div id="bulkProgress" style="margin-top: 15px; display: none;">
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 6px;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                        <span id="bulkProgressText">Starting...</span>
+                        <span id="bulkProgressPercent">0%</span>
+                    </div>
+                    <div style="background: #e0e0e0; border-radius: 10px; height: 20px; overflow: hidden;">
+                        <div id="bulkProgressBar" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); height: 100%; width: 0%; transition: width 0.3s; border-radius: 10px;"></div>
+                    </div>
+                    <div style="margin-top: 10px; font-size: 12px; color: #666;">
+                        <span id="bulkCurrentDate"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p id="progressMessage">Initializing...</p>
+            <div style="margin-top: 15px; width: 100%; max-width: 400px; margin-left: auto; margin-right: auto;">
+                <div style="background: #e0e0e0; border-radius: 10px; height: 20px; overflow: hidden;">
+                    <div id="progressBar" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); height: 100%; width: 0%; transition: width 0.3s; border-radius: 10px;"></div>
+                </div>
+                <div style="text-align: center; margin-top: 5px; font-size: 12px; color: #666;">
+                    <span id="progressPercent">0%</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="errorMessage"></div>
+        <div id="successMessage"></div>
+
+        <div class="results-section" id="resultsSection" style="display: none;">
+            <div class="results-header">
+                <h2>Results</h2>
+                <div>
+                    <span class="results-count" id="resultsCount"></span>
+                    <button class="btn btn-secondary" onclick="downloadCSV()" id="downloadBtn">📥 Download CSV</button>
+                </div>
+            </div>
+            <div style="overflow-x: auto;">
+                <table id="resultsTable">
+                    <thead>
+                        <tr>
+                            <th>Rental Date</th>
+                            <th>Vehicle Name</th>
+                            <th>Car Type</th>
+                            <th>Supplier</th>
+                            <th>Price</th>
+                            <th>Price/Day</th>
+                            <th>Rating</th>
+                            <th>Recommended</th>
+                            <th>ACRISS Code</th>
+                            <th>Transmission</th>
+                            <th>Seats</th>
+                            <th>Fuel Type</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resultsBody">
+                    </tbody>
+                </table>
+            </div>
+            <div class="pagination" id="pagination" style="display: none;">
+                <button id="prevBtn" onclick="changePage(-1)">← Previous</button>
+                <div id="pageNumbers"></div>
+                <div class="pagination-info" id="paginationInfo"></div>
+                <button id="nextBtn" onclick="changePage(1)">Next →</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let selectedLocationId = null;
+        let currentCsvFilename = null;
+        let allOffers = [];
+        let currentPage = 1;
+        const itemsPerPage = 10;
+
+        // Set default dates (7 days from today)
+        const today = new Date();
+        const nextWeek = new Date(today);
+        nextWeek.setDate(today.getDate() + 7);
+        
+        document.getElementById('pickupDate').value = today.toISOString().split('T')[0];
+        document.getElementById('dropoffDate').value = nextWeek.toISOString().split('T')[0];
+
+        async function searchLocation() {
+            const query = document.getElementById('locationQuery').value.trim();
+            if (!query) {
+                alert('Please enter a location');
+                return;
+            }
+
+            const resultsDiv = document.getElementById('locationResults');
+            resultsDiv.style.display = 'block';
+            resultsDiv.innerHTML = '<div style="text-align: center; padding: 20px;">Searching...</div>';
+
+            try {
+                const response = await fetch('/api/search-location', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ query })
+                });
+
+                const data = await response.json();
+                
+                if (data.error) {
+                    resultsDiv.innerHTML = `<div class="error">${data.error}</div>`;
+                    return;
+                }
+
+                if (!data.locations || data.locations.length === 0) {
+                    resultsDiv.innerHTML = '<div class="error">No locations found</div>';
+                    return;
+                }
+
+                resultsDiv.innerHTML = data.locations.map((loc, index) => `
+                    <div class="location-item" onclick="selectLocation(${loc.id}, '${loc.name || loc.displayName || 'Location ' + (index + 1)}')">
+                        <strong>${loc.name || loc.displayName || 'Location ' + (index + 1)}</strong>
+                        ${loc.address ? `<br><small style="color: #666;">${loc.address}</small>` : ''}
+                    </div>
+                `).join('');
+            } catch (error) {
+                resultsDiv.innerHTML = `<div class="error">Error: ${error.message}</div>`;
+            }
+        }
+
+        function selectLocation(id, name) {
+            selectedLocationId = id;
+            document.getElementById('selectedLocation').style.display = 'block';
+            document.getElementById('selectedLocationText').textContent = name + ` (ID: ${id})`;
+            
+            // Highlight selected
+            document.querySelectorAll('.location-item').forEach(item => {
+                item.classList.remove('selected');
+            });
+            event.target.closest('.location-item').classList.add('selected');
+        }
+
+        async function runScraper() {
+            if (!selectedLocationId) {
+                alert('Please select a location first');
+                return;
+            }
+
+            const pickupDate = document.getElementById('pickupDate').value;
+            const dropoffDate = document.getElementById('dropoffDate').value;
+            const pickupTime = document.getElementById('pickupTime').value;
+            const dropoffTime = document.getElementById('dropoffTime').value;
+
+            if (!pickupDate || !dropoffDate) {
+                alert('Please select pickup and drop-off dates');
+                return;
+            }
+
+            // Show loading
+            document.getElementById('loading').classList.add('active');
+            document.getElementById('scrapeBtn').disabled = true;
+            document.getElementById('errorMessage').innerHTML = '';
+            document.getElementById('successMessage').innerHTML = '';
+            document.getElementById('resultsSection').style.display = 'none';
+            updateProgress('Initializing scraper...', 0);
+
+            try {
+                // Start scraping
+                const response = await fetch('/api/scrape', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        locationId: selectedLocationId,
+                        pickup: pickupDate,
+                        dropoff: dropoffDate,
+                        pickupTime: pickupTime,
+                        dropoffTime: dropoffTime
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.error) {
+                    document.getElementById('errorMessage').innerHTML = `<div class="error">${data.error}</div>`;
+                    document.getElementById('loading').classList.remove('active');
+                    document.getElementById('scrapeBtn').disabled = false;
+                    return;
+                }
+
+                // Poll for progress updates
+                const sessionId = data.sessionId;
+                const progressInterval = setInterval(async () => {
+                    try {
+                        const progressResponse = await fetch(`/api/scrape-progress/${sessionId}`);
+                        const progressData = await progressResponse.json();
+                        
+                        updateProgress(progressData.message, progressData.progress || 0);
+
+                        if (progressData.status === 'completed') {
+                            clearInterval(progressInterval);
+                            const result = progressData.result;
+                            currentCsvFilename = result.csvFilename;
+                            displayResults(result.offers);
+                            document.getElementById('successMessage').innerHTML = 
+                                `<div class="success">✅ Successfully found ${result.total} car rental offers!</div>`;
+                            document.getElementById('loading').classList.remove('active');
+                            document.getElementById('scrapeBtn').disabled = false;
+                        } else if (progressData.status === 'error') {
+                            clearInterval(progressInterval);
+                            document.getElementById('errorMessage').innerHTML = 
+                                `<div class="error">${progressData.message}</div>`;
+                            document.getElementById('loading').classList.remove('active');
+                            document.getElementById('scrapeBtn').disabled = false;
+                        }
+                    } catch (error) {
+                        console.error('Progress polling error:', error);
+                    }
+                }, 500); // Poll every 500ms
+
+            } catch (error) {
+                document.getElementById('errorMessage').innerHTML = 
+                    `<div class="error">Error: ${error.message}</div>`;
+                document.getElementById('loading').classList.remove('active');
+                document.getElementById('scrapeBtn').disabled = false;
+            }
+        }
+
+        function updateProgress(message, percent) {
+            document.getElementById('progressMessage').textContent = message;
+            document.getElementById('progressBar').style.width = percent + '%';
+            document.getElementById('progressPercent').textContent = Math.round(percent) + '%';
+        }
+
+        function displayResults(offers) {
+            allOffers = offers;
+            currentPage = 1;
+            renderPage();
+        }
+
+        function renderPage() {
+            const tbody = document.getElementById('resultsBody');
+            tbody.innerHTML = '';
+
+            if (allOffers.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="12" class="no-results">No offers found</td></tr>';
+                document.getElementById('pagination').style.display = 'none';
+                return;
+            }
+
+            // Calculate pagination
+            const totalPages = Math.ceil(allOffers.length / itemsPerPage);
+            const startIndex = (currentPage - 1) * itemsPerPage;
+            const endIndex = Math.min(startIndex + itemsPerPage, allOffers.length);
+            const pageOffers = allOffers.slice(startIndex, endIndex);
+
+            // Render table rows
+            pageOffers.forEach(offer => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${offer.rentalDate || 'N/A'}</td>
+                    <td><strong>${offer.vehicleName || 'N/A'}</strong></td>
+                    <td>${offer.carType || 'N/A'}</td>
+                    <td>${offer.supplier || 'N/A'}</td>
+                    <td><strong>${offer.currency || 'USD'} ${offer.price ? offer.price.toFixed(2) : 'N/A'}</strong></td>
+                    <td>${offer.currency || 'USD'} ${offer.priceDayRate ? offer.priceDayRate.toFixed(2) : 'N/A'}</td>
+                    <td>${offer.rating ? '⭐ '.repeat(Math.floor(offer.rating)) : 'N/A'}</td>
+                    <td><span class="badge ${offer.recommended ? 'badge-yes' : 'badge-no'}">${offer.recommended ? 'Yes' : 'No'}</span></td>
+                    <td><strong style="font-family: monospace;">${offer.acrissCode || 'N/A'}</strong></td>
+                    <td>${offer.transmission || 'N/A'}</td>
+                    <td>${offer.seats || 'N/A'}</td>
+                    <td>${offer.fuelType || 'N/A'}</td>
+                `;
+                tbody.appendChild(row);
+            });
+
+            // Update pagination controls
+            document.getElementById('resultsCount').textContent = `${allOffers.length} offers found`;
+            document.getElementById('paginationInfo').textContent = `Showing ${startIndex + 1}-${endIndex} of ${allOffers.length}`;
+            
+            // Update pagination buttons
+            document.getElementById('prevBtn').disabled = currentPage === 1;
+            document.getElementById('nextBtn').disabled = currentPage === totalPages;
+
+            // Render page numbers
+            renderPageNumbers(totalPages);
+
+            document.getElementById('resultsSection').style.display = 'block';
+            document.getElementById('pagination').style.display = 'flex';
+        }
+
+        function renderPageNumbers(totalPages) {
+            const pageNumbersDiv = document.getElementById('pageNumbers');
+            pageNumbersDiv.innerHTML = '';
+
+            // Show max 7 page numbers
+            let startPage = Math.max(1, currentPage - 3);
+            let endPage = Math.min(totalPages, startPage + 6);
+
+            if (endPage - startPage < 6) {
+                startPage = Math.max(1, endPage - 6);
+            }
+
+            // First page
+            if (startPage > 1) {
+                const btn = document.createElement('button');
+                btn.textContent = '1';
+                btn.onclick = () => goToPage(1);
+                pageNumbersDiv.appendChild(btn);
+                if (startPage > 2) {
+                    const ellipsis = document.createElement('span');
+                    ellipsis.textContent = '...';
+                    ellipsis.style.padding = '0 5px';
+                    pageNumbersDiv.appendChild(ellipsis);
+                }
+            }
+
+            // Page numbers
+            for (let i = startPage; i <= endPage; i++) {
+                const btn = document.createElement('button');
+                btn.textContent = i;
+                btn.classList.toggle('active', i === currentPage);
+                btn.onclick = () => goToPage(i);
+                pageNumbersDiv.appendChild(btn);
+            }
+
+            // Last page
+            if (endPage < totalPages) {
+                if (endPage < totalPages - 1) {
+                    const ellipsis = document.createElement('span');
+                    ellipsis.textContent = '...';
+                    ellipsis.style.padding = '0 5px';
+                    pageNumbersDiv.appendChild(ellipsis);
+                }
+                const btn = document.createElement('button');
+                btn.textContent = totalPages;
+                btn.onclick = () => goToPage(totalPages);
+                pageNumbersDiv.appendChild(btn);
+            }
+        }
+
+        function goToPage(page) {
+            const totalPages = Math.ceil(allOffers.length / itemsPerPage);
+            if (page >= 1 && page <= totalPages) {
+                currentPage = page;
+                renderPage();
+                // Scroll to top of results
+                document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        function changePage(direction) {
+            const totalPages = Math.ceil(allOffers.length / itemsPerPage);
+            const newPage = currentPage + direction;
+            if (newPage >= 1 && newPage <= totalPages) {
+                goToPage(newPage);
+            }
+        }
+
+        async function downloadCSV() {
+            if (!currentCsvFilename) {
+                alert('No CSV file available');
+                return;
+            }
+            
+            try {
+                // Encode the filename properly
+                const encodedFilename = encodeURIComponent(currentCsvFilename);
+                const url = `/api/download-csv/${encodedFilename}`;
+                
+                // Try to download
+                const response = await fetch(url);
+                
+                if (!response.ok) {
+                    const error = await response.json();
+                    alert(`Error downloading CSV: ${error.error || 'Unknown error'}`);
+                    console.error('CSV download error:', error);
+                    return;
+                }
+                
+                // Get the blob and create download link
+                const blob = await response.blob();
+                const downloadUrl = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = downloadUrl;
+                a.download = currentCsvFilename;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(downloadUrl);
+            } catch (error) {
+                console.error('CSV download error:', error);
+                alert(`Error downloading CSV: ${error.message}`);
+            }
+        }
+
+        // Bulk search functionality
+        function calculateDateRange() {
+            const startDate = document.getElementById('bulkStartDate').value;
+            const endDate = document.getElementById('bulkEndDate').value;
+            
+            if (startDate && endDate) {
+                const start = new Date(startDate);
+                const end = new Date(endDate);
+                const diffTime = Math.abs(end - start);
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;
+                
+                if (diffDays > 365) {
+                    document.getElementById('bulkDateCount').innerHTML = 
+                        `<span style="color: #dc3545;">⚠️ Maximum 365 days (${diffDays} days selected)</span>`;
+                    document.getElementById('bulkScrapeBtn').disabled = true;
+                } else if (diffDays < 1) {
+                    document.getElementById('bulkDateCount').innerHTML = 
+                        `<span style="color: #dc3545;">⚠️ End date must be after start date</span>`;
+                    document.getElementById('bulkScrapeBtn').disabled = true;
+                } else {
+                    document.getElementById('bulkDateCount').innerHTML = 
+                        `<strong>${diffDays} days</strong> will be searched (${diffDays} requests)`;
+                    document.getElementById('bulkScrapeBtn').disabled = false;
+                }
+            } else {
+                document.getElementById('bulkDateCount').innerHTML = 
+                    'Select date range to see number of searches';
+                document.getElementById('bulkScrapeBtn').disabled = true;
+            }
+        }
+
+        document.getElementById('bulkStartDate').addEventListener('change', calculateDateRange);
+        document.getElementById('bulkEndDate').addEventListener('change', calculateDateRange);
+
+        async function runBulkScraper() {
+            if (!selectedLocationId) {
+                alert('Please select a location first');
+                return;
+            }
+
+            const startDate = document.getElementById('bulkStartDate').value;
+            const endDate = document.getElementById('bulkEndDate').value;
+            const time = document.getElementById('bulkTime').value;
+
+            if (!startDate || !endDate) {
+                alert('Please select start and end dates');
+                return;
+            }
+
+            const start = new Date(startDate);
+            const end = new Date(endDate);
+            const diffTime = Math.abs(end - start);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;
+
+            if (diffDays > 365) {
+                alert('Maximum 365 days allowed');
+                return;
+            }
+
+            // Show bulk progress
+            document.getElementById('bulkProgress').style.display = 'block';
+            document.getElementById('bulkScrapeBtn').disabled = true;
+            document.getElementById('errorMessage').innerHTML = '';
+            document.getElementById('successMessage').innerHTML = '';
+            document.getElementById('resultsSection').style.display = 'none';
+
+            try {
+                const response = await fetch('/api/bulk-scrape', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        locationId: selectedLocationId,
+                        startDate: startDate,
+                        endDate: endDate,
+                        time: time
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.error) {
+                    document.getElementById('errorMessage').innerHTML = `<div class="error">${data.error}</div>`;
+                    document.getElementById('bulkProgress').style.display = 'none';
+                    document.getElementById('bulkScrapeBtn').disabled = false;
+                    return;
+                }
+
+                // Poll for progress
+                const sessionId = data.sessionId;
+                const progressInterval = setInterval(async () => {
+                    try {
+                        const progressResponse = await fetch(`/api/bulk-scrape-progress/${sessionId}`);
+                        const progressData = await progressResponse.json();
+                        
+                        updateBulkProgress(progressData);
+
+                        if (progressData.status === 'completed') {
+                            clearInterval(progressInterval);
+                            const result = progressData.result;
+                            currentCsvFilename = result.csvFilename;
+                            displayResults(result.allOffers);
+                            document.getElementById('successMessage').innerHTML = 
+                                `<div class="success">✅ Bulk search completed! Found ${result.totalOffers} total offers across ${result.totalDays} days!</div>`;
+                            document.getElementById('bulkScrapeBtn').disabled = false;
+                        } else if (progressData.status === 'error') {
+                            clearInterval(progressInterval);
+                            document.getElementById('errorMessage').innerHTML = 
+                                `<div class="error">${progressData.message}</div>`;
+                            document.getElementById('bulkScrapeBtn').disabled = false;
+                        }
+                    } catch (error) {
+                        console.error('Bulk progress polling error:', error);
+                    }
+                }, 500);
+
+            } catch (error) {
+                document.getElementById('errorMessage').innerHTML = 
+                    `<div class="error">Error: ${error.message}</div>`;
+                document.getElementById('bulkProgress').style.display = 'none';
+                document.getElementById('bulkScrapeBtn').disabled = false;
+            }
+        }
+
+        function updateBulkProgress(data) {
+            document.getElementById('bulkProgressText').textContent = data.message || 'Processing...';
+            document.getElementById('bulkProgressPercent').textContent = Math.round(data.progress || 0) + '%';
+            document.getElementById('bulkProgressBar').style.width = (data.progress || 0) + '%';
+            
+            if (data.currentDate) {
+                document.getElementById('bulkCurrentDate').textContent = 
+                    `Currently searching: ${data.currentDate} (Day ${data.currentDay || 0} of ${data.totalDays || 0})`;
+            }
+        }
+
+        // Allow Enter key to search location
+        document.getElementById('locationQuery').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                searchLocation();
+            }
+        });
+    </script>
+</body>
+</html>
+

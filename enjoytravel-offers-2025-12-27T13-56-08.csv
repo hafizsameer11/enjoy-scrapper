@@ -1,0 +1,176 @@
+Brand,Car Type,Vehicle Name,Supplier,Price,Currency,Price Per Day,Rating,Recommended,Car ID,Transmission,Seats,Fuel Type
+,Economy,Chevy Spark,NuCars,46.9,USD,6.7,3,No,nuc-71151-ECAR-4,Automatic,4,Petrol
+,Compact,Hyundai Accent,NuCars,47.6,USD,6.8,3,No,nuc-71151-CCAR-4,Automatic,4,Petrol
+,Intermediate,Kia Forte,NuCars,48.23,USD,6.89,3,No,nuc-71151-ICAR-5,Automatic,5,Petrol
+,Compact,Nissan Kicks,NuCars,101.5,USD,14.5,3,No,nuc-71151-CFAR-4,Automatic,4,Petrol
+,Fullsize,Nissan Altima,NuCars,278.25,USD,39.75,3,No,nuc-71151-FCAR-5,Automatic,5,Petrol
+,Premium elite,Jeep Wrangler 4X4,NuCars,414.75,USD,59.25,3,No,nuc-71151-UFBR-5,Automatic,5,Petrol
+,Mini,Toyota Sienna,NuCars,1370.25,USD,195.75,3,No,nuc-71151-MVAR-7,Automatic,7,Petrol
+,Premium,Dodge Charger,NuCars,2735.25,USD,390.75,3,No,nuc-71151-PCAR-5,Automatic,5,Petrol
+,Premium elite,Dodge Charger Gt,NuCars,2803.5,USD,400.5,3,No,nuc-71151-UCAR-5,Automatic,5,Petrol
+,Economy,Mitsubishi Mirage,Enterprise,488.9,USD,69.84,3,No,gx-38401-ECAR-ECAR-4,Automatic,4,Petrol
+,Compact,Nissan Versa,Enterprise,490.23,USD,70.03,3,No,gx-38401-CCAR-CCAR-5,Automatic,5,Petrol
+,Intermediate,Toyota Corolla,Enterprise,493.39,USD,70.48,3,No,gx-38401-ICAR-ICAR-5,Automatic,5,Petrol
+,Standard,Kia Soul,Enterprise,521.48,USD,74.5,3,No,gx-38401-SCAR-SCAR-5,Automatic,5,Petrol
+,Standard,Toyota Prius,Enterprise,1248.32,USD,178.33,3,No,gx-38401-SCAH-SCAH-5,Automatic,5,Hybrid
+,Fullsize,Toyota Camry,Enterprise,521.48,USD,74.5,3,No,gx-38401-FCAR-FCAR-5,Automatic,5,Petrol
+,Fullsize,Honda Accord,Enterprise,521.48,USD,74.5,3,No,gx-38401-FCAH-FCAH-5,Automatic,5,Hybrid
+,Premium,Nissan Maxima,Enterprise,1154.39,USD,164.91,3,No,gx-38401-PCAR-PCAR-5,Automatic,5,Petrol
+,Premium elite,Mercedes GLE,Enterprise,2533.49,USD,361.93,3,No,gx-38401-UDAR-UDAR-5,Automatic,5,Petrol
+,Mini,Chrysler Pacifica,Enterprise,572,USD,81.71,3,No,gx-38401-MVAR-MVAR-7,Automatic,7,Petrol
+,Standard,Toyota Sienna,Enterprise,572,USD,81.71,3,No,gx-38401-SVAR-SVAR-8,Automatic,8,Petrol
+,Fullsize,Ford Transit,Enterprise,1405.7,USD,200.81,3,No,gx-38401-FVAR-FVAR-15,Automatic,15,Petrol
+,Special,Mercedes Sprinter,Enterprise,1505.69,USD,215.1,3,No,gx-38401-XVAR-XVAR-5,Automatic,5,Petrol
+,Compact,Hyundai Kona,Enterprise,558.76,USD,79.82,3,No,gx-38401-CFAR-CFAR-5,Automatic,5,Petrol
+,Compact,Hyundai Kona,Enterprise,564.71,USD,80.67,3,No,gx-38401-CFDR-CFDR-5,Automatic,5,Petrol
+,Intermediate,Nissan Rogue,Enterprise,570.65,USD,81.52,3,No,gx-38401-IFAR-IFAR-5,Automatic,5,Petrol
+,Intermediate,Nissan Rogue,Enterprise,590.86,USD,84.41,3,No,gx-38401-IFDR-IFDR-5,Automatic,5,Petrol
+,Standard,Chevrolet Equinox,Enterprise,580.7,USD,82.96,3,No,gx-38401-SFAR-SFAR-5,Automatic,5,Petrol
+,Standard,Ford Edge,Enterprise,580.7,USD,82.96,3,No,gx-38401-SFDR-SFDR-5,Automatic,5,Petrol
+,Standard elite,Audi Q3,Enterprise,628.26,USD,89.75,3,No,gx-38401-RFAR-RFAR-5,Automatic,5,Petrol
+,Premium elite,Audi Q5,Enterprise,2331.35,USD,333.05,3,No,gx-38401-UFAR-UFAR-5,Automatic,5,Petrol
+,Standard,Ford Mustang,Enterprise,646.79,USD,92.4,3,No,gx-38401-STAR-STAR-4,Automatic,4,Petrol
+,Fullsize,Jeep Wrangler,Enterprise,1201.95,USD,171.71,3,No,gx-38401-FJAR-FJAR-5,Automatic,5,Petrol
+,Fullsize elite,Audi A5 Sportback,Enterprise,1184.12,USD,169.16,3,No,gx-38401-GXAR-GXAR-5,Automatic,5,Petrol
+,Premium,Audi A3,Enterprise,1154.39,USD,164.91,3,No,gx-38401-PXAR-PXAR-5,Automatic,5,Petrol
+,Standard,Toyota Tacoma,Enterprise,555.67,USD,79.38,3,No,gx-38401-SPAR-SPAR-4,Automatic,4,Petrol
+,Premium,Ford F-150,Enterprise,593.72,USD,84.82,3,No,gx-38401-PPAR-PPAR-4,Automatic,4,Petrol
+,Standard,Dodge Challenger,Enterprise,2557.26,USD,365.32,3,No,gx-38401-SSAR-SSAR-4,Automatic,4,Petrol
+,Economy,Mitsubishi Mirage,Alamo,452.68,USD,64.67,3,No,gx-34911-ECAR-ECAR-4,Automatic,4,Petrol
+,Compact,Nissan Versa,Alamo,453.92,USD,64.85,3,No,gx-34911-CCAR-CCAR-5,Automatic,5,Petrol
+,Intermediate,Toyota Corolla,Alamo,456.85,USD,65.26,3,No,gx-34911-ICAR-ICAR-5,Automatic,5,Petrol
+,Standard,Kia Soul,Alamo,482.85,USD,68.98,3,No,gx-34911-SCAR-SCAR-5,Automatic,5,Petrol
+,Fullsize,Toyota Camry,Alamo,482.85,USD,68.98,3,No,gx-34911-FCAR-FCAR-5,Automatic,5,Petrol
+,Premium,Nissan Maxima,Alamo,588.66,USD,84.09,3,No,gx-34911-PCAR-PCAR-5,Automatic,5,Petrol
+,Premium elite,Mercedes GLE,Alamo,2459.31,USD,351.33,3,No,gx-34911-UDAR-UDAR-5,Automatic,5,Petrol
+,Mini,Chrysler Pacifica,Alamo,556.67,USD,79.52,3,No,gx-34911-MVAR-MVAR-7,Automatic,7,Petrol
+,Standard,Toyota Sienna,Alamo,556.67,USD,79.52,3,No,gx-34911-SVAR-SVAR-8,Automatic,8,Petrol
+,Fullsize,Ford Transit,Alamo,1364.89,USD,194.98,3,No,gx-34911-FVAR-FVAR-15,Automatic,15,Petrol
+,Special,Mercedes Sprinter,Alamo,1462.35,USD,208.91,3,No,gx-34911-XVAR-XVAR-5,Automatic,5,Petrol
+,Compact,Hyundai Kona,Alamo,523.1,USD,74.73,3,No,gx-34911-CFAR-CFAR-5,Automatic,5,Petrol
+,Compact,Hyundai Kona,Alamo,534.99,USD,76.43,3,No,gx-34911-CFDR-CFDR-5,Automatic,5,Petrol
+,Intermediate,Nissan Rogue,Alamo,540.94,USD,77.28,3,No,gx-34911-IFAR-IFAR-5,Automatic,5,Petrol
+,Intermediate,Nissan Rogue,Alamo,559.95,USD,79.99,3,No,gx-34911-IFDR-IFDR-5,Automatic,5,Petrol
+,Standard,Chevrolet Equinox,Alamo,553.05,USD,79.01,3,No,gx-34911-SFAR-SFAR-5,Automatic,5,Petrol
+,Standard,Ford Edge,Alamo,553.05,USD,79.01,3,No,gx-34911-SFDR-SFDR-5,Automatic,5,Petrol
+,Standard elite,Audi Q3,Alamo,600.6,USD,85.8,3,No,gx-34911-RFAR-RFAR-5,Automatic,5,Petrol
+,Premium elite,Audi Q5,Alamo,2263.22,USD,323.32,3,No,gx-34911-UFAR-UFAR-5,Automatic,5,Petrol
+,Standard,Ford Mustang,Alamo,616,USD,88,3,No,gx-34911-STAR-STAR-4,Automatic,4,Petrol
+,Fullsize,Jeep Wrangler,Alamo,648.12,USD,92.59,3,No,gx-34911-FJAR-FJAR-5,Automatic,5,Petrol
+,Standard elite,BMW 2 Series Gran Coupe,Alamo,1772.59,USD,253.23,3,No,gx-34911-RXAR-RXAR-5,Automatic,5,Petrol
+,Fullsize elite,Audi A5 Sportback,Alamo,1124.84,USD,160.69,3,No,gx-34911-GXAR-GXAR-5,Automatic,5,Petrol
+,Premium,Audi A3,Alamo,588.66,USD,84.09,3,No,gx-34911-PXAR-PXAR-5,Automatic,5,Petrol
+,Standard,Toyota Tacoma,Alamo,525.96,USD,75.14,3,No,gx-34911-SPAR-SPAR-4,Automatic,4,Petrol
+,Standard,Toyota Tacoma,Alamo,1447.34,USD,206.76,3,No,gx-34911-SPBR-SPBR-4,Automatic,4,Petrol
+,Premium,Ford F-150,Alamo,555.67,USD,79.38,3,No,gx-34911-PPAR-PPAR-4,Automatic,4,Petrol
+,Standard,Dodge Challenger,Alamo,2557.26,USD,365.32,3,No,gx-34911-SSAR-SSAR-4,Automatic,4,Petrol
+,Compact,Nissan Sentra,Easirent,97.89,USD,13.98,3,No,3376,Automatic,5,Petrol
+,Standard,Hyundai Santa Fe,Easirent,128.37,USD,18.34,3,No,3368,Automatic,5,Petrol
+,Fullsize,Nissan Altima,Easirent,134.47,USD,19.21,3,No,3373,Automatic,5,Petrol
+,Economy,Toyota Yaris,Easirent,212.85,USD,30.41,3,No,3381,Automatic,5,Petrol
+,Compact,Buick Encore,Easirent,219.82,USD,31.4,3,No,3361,Automatic,5,Petrol
+,Fullsize,Chevrolet Traverse,Easirent,296.1,USD,42.3,3,No,3362,Automatic,5+2,Petrol
+,Standard,Ford Mustang,Easirent,534.13,USD,76.3,3,No,3367,Automatic,4,Petrol
+,Compact,Hyundai Accent,Priceless,41.77,USD,5.97,3,No,pri-91859-CCAR-5,Automatic,5,Petrol
+,Economy,Chevy Spark,Priceless,41.77,USD,5.97,3,No,pri-91859-ECAR-5,Automatic,5,Petrol
+,Intermediate,Toyota Corolla,Priceless,41.77,USD,5.97,3,No,pri-91859-ICAR-5,Automatic,5,Petrol
+,Fullsize,Kia Optima,Priceless,71.53,USD,10.22,3,No,pri-91859-FCAR-5,Automatic,5,Petrol
+,Intermediate,Kia Sorento,Priceless,82.4,USD,11.77,3,No,pri-91859-IFAR-5,Automatic,5,Petrol
+,Fullsize,Chevrolet Express 12 Passenger,Priceless,3123.26,USD,446.18,3,No,pri-91859-FVAR-12,Automatic,12,Petrol
+,Premium,Ford Transit 15 Passenger High Roof,Priceless,2947.52,USD,421.07,3,No,pri-91859-PVAR-15,Automatic,15,Petrol
+,Compact,Nissan Versa,NextCar,117.99,USD,16.86,3,No,nex-91786-CCAR-5,Automatic,5,Petrol
+,Intermediate,Toyota Corolla,NextCar,117.99,USD,16.86,3,No,nex-91786-ICAR-5,Automatic,5,Petrol
+,Economy,Kia Rio,NextCar,120.74,USD,17.25,3,No,nex-91786-ECAR-5,Automatic,5,Petrol
+,Fullsize,Hyundai Sonata,NextCar,130.9,USD,18.7,3,No,nex-91786-FCAR-5,Automatic,5,Petrol
+,Intermediate,Toyota Rav4,NextCar,170.25,USD,24.32,3,No,nex-91786-IFAR-5,Automatic,5,Petrol
+,Standard,Hyundai Santa Fe 2021,NextCar,196.17,USD,28.02,3,No,nex-91786-SFAR-5,Automatic,5,Petrol
+,Mini,Chrysler Voyager,NextCar,689.45,USD,98.49,3,No,nex-91786-MVAR-7,Automatic,7,Petrol
+,Compact,Nissan Versa,Right Cars,78.82,USD,11.26,3,No,27569,Automatic,5,Petrol
+,Compact,Nissan Kicks,Right Cars,86.7,USD,12.39,3,No,27574,Automatic,5,Petrol
+,Economy,Toyota Yaris,Right Cars,78.87,USD,11.27,3,No,27570,Automatic,5,Petrol
+,Fullsize,Nissan Altima,Right Cars,129.64,USD,18.52,3,No,27571,Automatic,5,Petrol
+,Fullsize,Toyota Highlander,Right Cars,228.77,USD,32.68,3,No,27575,Automatic,5+2,Petrol
+,Intermediate,Nissan Sentra,Right Cars,114.38,USD,16.34,3,No,27572,Automatic,5,Petrol
+,Intermediate,Toyota RAV4,Right Cars,114.38,USD,16.34,3,No,27576,Automatic,5,Petrol
+,Mini,Chrysler Voyager,Right Cars,236.02,USD,33.72,3,No,27573,Automatic,5+2,Petrol
+,Standard,Toyota Camry,Right Cars,99.13,USD,14.16,3,No,27577,Automatic,5,Petrol
+,Compact,Nissan Versa,Mex Rent A Car,115.84,USD,16.55,3,No,5896,Automatic,5,Petrol
+,Intermediate,Toyota Corolla,Mex Rent A Car,115.84,USD,16.55,3,No,5900,Automatic,5,Petrol
+,Fullsize,Nissan Altima,Mex Rent A Car,129.36,USD,18.48,3,No,5897,Automatic,5,Petrol
+,Intermediate,Toyota RAV4,Mex Rent A Car,174.45,USD,24.92,3,No,5901,Automatic,5,Petrol
+,Standard,Toyota Highlander,Mex Rent A Car,210.52,USD,30.07,3,No,5906,Automatic,6,Petrol
+,Fullsize,Toyota 4Runner,Mex Rent A Car,264.6,USD,37.8,3,No,5898,Automatic,5+2,Petrol
+,Mini,Dodge Grand Caravan,Mex Rent A Car,264.6,USD,37.8,3,No,5902,Automatic,5+2,Petrol
+,Compact,Nissan Versa,Zezgo,78.72,USD,11.25,3,No,6284,Automatic,5,Petrol
+,Compact,Nissan Kicks,Zezgo,86.6,USD,12.37,3,No,6286,Automatic,5,Petrol
+,Economy,Toyota Yaris,Zezgo,78.95,USD,11.28,3,No,6283,Automatic,5,Petrol
+,Fullsize,Toyota Highlander,Zezgo,663.85,USD,94.84,3,No,6288,Automatic,5+2,Petrol
+,Intermediate,Nissan Sentra,Zezgo,94.4,USD,13.49,3,No,6285,Automatic,5,Petrol
+,Mini,Chrysler Voyager,Zezgo,1570.4,USD,224.34,3,No,6282,Automatic,5+2,Petrol
+,Economy,Nissan Tiida,Economy Rent a Car,51.39,USD,7.34,3,No,23115,Automatic,5,Petrol
+,Compact,Nissan Versa,Economy Rent a Car,56.98,USD,8.14,3,No,23116,Automatic,5,Petrol
+,Intermediate,Ford Focus,Economy Rent a Car,59.57,USD,8.51,3,No,23051,Automatic,5,Petrol
+,Standard,Nissan Sentra,Economy Rent a Car,60.42,USD,8.63,3,No,23114,Automatic,5,Petrol
+,Fullsize,Nissan Altima,Economy Rent a Car,87.34,USD,12.48,3,No,23407,Automatic,5,Petrol
+,Intermediate,Nissan Rogue,Economy Rent a Car,102.37,USD,14.62,3,No,23110,Automatic,5,Petrol
+,Fullsize,Toyota Highlander,Economy Rent a Car,171.8,USD,24.54,3,No,23128,Automatic,5+2,Petrol
+,Mini,Chrysler Pacifica,Economy Rent a Car,210.66,USD,30.09,3,No,23026,Automatic,7,Petrol
+,Economy,Mitsubishi Mirage,Fox RentACar,329.87,USD,47.12,3,No,23286,Automatic,4,Petrol
+,Compact,Nissan Sentra,Fox RentACar,343.32,USD,49.05,3,No,23287,Automatic,5,Petrol
+,Intermediate,Toyota Corolla,Fox RentACar,356.79,USD,50.97,3,No,23288,Automatic,5,Petrol
+,Standard,Nissan Altima,Fox RentACar,370.22,USD,52.89,3,No,23289,Automatic,5,Petrol
+,Fullsize,Toyota Camry,Fox RentACar,383.68,USD,54.81,3,No,23290,Automatic,5,Petrol
+,Compact,Ford EcoSport,Fox RentACar,471.12,USD,67.3,3,No,23295,Automatic,5,Petrol
+,Intermediate,Kia Sportage,Fox RentACar,555.88,USD,79.41,3,No,23296,Automatic,5,Petrol
+,Standard,Hyundai Santa Fe,Fox RentACar,506.08,USD,72.3,3,No,23297,Automatic,5,Petrol
+,Fullsize,Toyota 4Runner,Fox RentACar,669.63,USD,95.66,3,No,23298,Automatic,5,Petrol
+,Mini,Chevrolet Spark,AutoUnion,29.76,USD,4.25,3,No,23425,Automatic,5,Petrol
+,Economy,Ford Fiesta,AutoUnion,29.76,USD,4.25,3,No,23432,Automatic,5,Petrol
+,Economy,Toyota Yaris,AutoUnion,29.76,USD,4.25,3,No,23433,Automatic,5,Petrol
+,Compact,Toyota Corolla,AutoUnion,30.28,USD,4.33,3,No,23434,Automatic,5,Petrol
+,Intermediate,Kia Forte,AutoUnion,30.28,USD,4.33,3,No,23436,Automatic,5,Petrol
+,Intermediate,Hyundai Elantra,AutoUnion,30.28,USD,4.33,3,No,23437,Automatic,5,Petrol
+,Compact,Nissan Kicks,AutoUnion,152.19,USD,21.74,3,No,23435,Automatic,5,Petrol
+,Intermediate,Chevrolet Equinox,AutoUnion,164.09,USD,23.44,3,No,23438,Automatic,5,Petrol
+,Standard,Toyota RAV4,AutoUnion,163.94,USD,23.42,3,No,23439,Automatic,5,Petrol
+,Fullsize,Chevrolet Malibu,AutoUnion,50.63,USD,7.23,3,No,23440,Automatic,5,Petrol
+,Intermediate,Dodge Grand Caravan,AutoUnion,696.84,USD,99.55,3,No,23441,Automatic,5+2,Petrol
+,Standard,Honda Odyssey,AutoUnion,717.26,USD,102.47,3,No,23442,Automatic,5+2,Petrol
+,Compact,Nissan Versa,Blue Auto Trading,629.69,USD,89.96,3,No,26039,Automatic,5,Petrol
+,Intermediate,Toyota Corolla,Blue Auto Trading,629.69,USD,89.96,3,No,26041,Automatic,5,Petrol
+,Luxury,Jeep Grand Cherokee,Blue Auto Trading,974.64,USD,139.23,3,No,26042,Automatic,5,Petrol
+,Luxury,Lexus TX,Blue Auto Trading,3689.27,USD,527.04,3,No,26486,Automatic,8,Petrol
+,Intermediate,Hyundai Elantra,Blue Auto Trading,629.69,USD,89.96,3,No,26483,Automatic,5,Petrol
+,Standard,Jeep Wrangler,Blue Auto Trading,1331.83,USD,190.26,3,No,26488,Automatic,5,Petrol
+,Standard,Kia K4,Blue Auto Trading,628.06,USD,89.72,3,No,26487,Automatic,5,Petrol
+,Mini elite,Fiat 500,Blue Auto Trading,628.06,USD,89.72,3,No,26036,Automatic,4,Petrol
+,Intermediate,Honda Civic,Blue Auto Trading,629.69,USD,89.96,3,No,26484,Automatic,4,Petrol
+,Intermediate,Acura Integra,Blue Auto Trading,872.58,USD,124.65,3,No,26485,Automatic,5,Petrol
+,Compact,Mazda CX-30,Blue Auto Trading,821.56,USD,117.37,3,No,26481,Automatic,5,Petrol
+,Compact,Nissan Versa,Stride,139.51,USD,19.93,3,No,27137,Automatic,4,Petrol
+,Intermediate,Nissan Kicks,Stride,161.87,USD,23.12,3,No,27140,Automatic,5,Petrol
+,Fullsize,Nissan Altima,Stride,142.27,USD,20.32,3,No,27139,Automatic,5,Petrol
+,Intermediate,Toyota Corolla,Stride,139.51,USD,19.93,3,No,27138,Automatic,5,Petrol
+,Standard,Toyota Highlander,Stride,195.03,USD,27.86,3,No,27141,Automatic,5,Petrol
+,Compact,Toyota Yaris,Routes,133.29,USD,19.04,3,No,rou-52215-CCAR-5,Automatic,5,Petrol
+,Standard,Toyota Highlander,Routes,233.42,USD,33.35,3,No,rou-52215-SFAR-5,Automatic,5,Petrol
+,Fullsize,Nissan Altima,Routes,151.38,USD,21.63,3,No,rou-52215-FCAR-5,Automatic,5,Petrol
+,Intermediate,Toyota Corolla,Routes,134.76,USD,19.25,3,No,rou-52215-ICAR-5,Automatic,5,Petrol
+,Economy,Kia  Rio,Routes,143.55,USD,20.51,3,No,rou-52215-ECAR-5,Automatic,5,Petrol
+,Fullsize,Toyota 4Runner,Routes,297.88,USD,42.55,3,No,rou-52215-FFAR-7,Automatic,7,Petrol
+,Intermediate,Nissan Rogue,Routes,200.18,USD,28.6,3,No,rou-52215-IFAR-5,Automatic,5,Petrol
+,Mini,Dodge Grand Caravan,Routes,296.44,USD,42.35,3,No,rou-52215-MVAR-7,Automatic,7,Petrol
+,Mini,Chrysler Pacifica,Thrifty,453.77,USD,64.82,3,No,29236,Automatic,7,Petrol
+,Economy,Chevrolet Spark,Thrifty,363.73,USD,51.96,3,No,29228,Automatic,4,Petrol
+,Intermediate,Kia K4,Thrifty,367.25,USD,52.46,3,No,29231,Automatic,5,Petrol
+,Standard,Kia K5,Thrifty,364.59,USD,52.08,3,No,29242,Automatic,5,Petrol
+,Standard,Chevrolet Equinox,Thrifty,410.88,USD,58.7,3,No,29239,Automatic,5,Petrol
+,Mini,Chrysler Pacifica,Dollar,431.2,USD,61.6,3,No,29084,Automatic,7,Petrol
+,Economy,Chevrolet Spark,Dollar,353.45,USD,50.49,3,No,29076,Automatic,4,Petrol
+,Compact,Ford Focus,Dollar,353.45,USD,50.49,3,No,32116,Automatic,5,Petrol
+,Intermediate,Kia K4,Dollar,356.11,USD,50.87,3,No,32118,Automatic,5,Petrol
+,Standard,Kia K5,Dollar,353.55,USD,50.51,3,No,32119,Automatic,5,Petrol
+,Standard,Chevrolet Equinox,Dollar,398.18,USD,56.88,3,No,29087,Automatic,5,Petrol
+,Fullsize,Chevrolet Malibu,Dollar,359.49,USD,51.36,3,No,29077,Automatic,5,Petrol
+,Compact,Chevrolet Trax,Dollar,351.65,USD,50.24,3,No,32121,Automatic,5,Petrol
+,Intermediate,Nissan Rogue,Dollar,366.36,USD,52.34,3,No,29079,Automatic,5,Petrol

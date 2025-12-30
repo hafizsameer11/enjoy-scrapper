@@ -1,0 +1,22 @@
+{
+  "name": "enjoy-browser-scraper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "scrape": "node scrape.js",
+    "scrape:browserql": "node scrape-browserql.js",
+    "server": "node server.js",
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.22.1",
+    "playwright": "^1.57.0"
+  }
+}
